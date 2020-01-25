@@ -74,8 +74,8 @@ var _ fusefs.HandleFlusher = (*FileHandle)(nil)
 // Filesystems shouldn't assume that flush will always be called after
 // some writes, or that if will be called at all.
 func (fh *FileHandle) Flush(ctx context.Context, req *fuse.FlushRequest) (err error) {
-	defer log.Trace(fh, "")("err=%v", &err)
-	return translateError(fh.Handle.Flush())
+	defer log.Trace(fh, "<><><>IGNORED")("err=%v", &err)
+	return nil //translateError(fh.Handle.Flush())
 }
 
 var _ fusefs.HandleReleaser = (*FileHandle)(nil)

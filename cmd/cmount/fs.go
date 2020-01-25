@@ -385,12 +385,12 @@ func (fsys *FS) Write(path string, buff []byte, ofst int64, fh uint64) (n int) {
 
 // Flush flushes an open file descriptor or path
 func (fsys *FS) Flush(path string, fh uint64) (errc int) {
-	defer log.Trace(path, "fh=0x%X", fh)("errc=%d", &errc)
+	defer log.Trace(path, "fh=0x%X, <><><>IGNORED", fh)("errc=%d", &errc)
 	handle, errc := fsys.getHandle(fh)
 	if errc != 0 {
 		return errc
 	}
-	return translateError(handle.Flush())
+	return nil //translateError(handle.Flush())
 }
 
 // Release closes the file if still open
